@@ -1,0 +1,44 @@
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 10vh;">
+  <h1>Europe's top 5 league players (API)</h1>
+</div><br>
+
+<div style="display: flex; flex-direction: row; justify-content: space-around; align-items: center; height: 70vh;">
+  <div class="card">
+
+  <% if !current_user %>
+  <div class="card">
+    <em>
+      <h2 class="card-header">Log in</h2>
+      <div class="card-body">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "current-password" %>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end %>
+
+          <div class="actions", style="display: flex; flex-direction: row; justify-content: space-between; align-items: center">
+            <%= f.submit "Log in", class: "btn btn-primary" %>
+            <%= link_to "Sign up", new_user_registration_path, class: "btn btn-secondary btn-block" %>
+          </div>
+        <% end %>
+      </div>
+                 <%= render "devise/shared/omniauth" %>
+    </em>
+  </div>
+  <% else %>
+  <%= link_to "Logout", destroy_user_session_path %>
+<% end %>
+</div>
+

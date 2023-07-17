@@ -1,0 +1,23 @@
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 10vh;">
+  <h1>Europe's top 5 league players (API)</h1>
+</div><br>
+
+<div style="display: flex; flex-direction: column; justify-content: space-around; align-items: center; height: 70vh;">
+  <div class="card">
+    <h2 class="card-header">API Content</h2>
+    <div class="card-body">
+      <div style="display: flex; flex-direction: column; justify-content: center; align-items: center">
+        <%= link_to "Api Index", players_path, class: "btn btn-success btn-block" %>
+        <em style="margin-top: 20px">
+          <%= link_to "Api Documentation (Swagger)", rswag_api_path, class: "btn btn-secondary btn-block" %>
+        </em>
+      </div>
+    </div>
+  </div>
+  
+<% if current_user %>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+    <%else%>
+     <%=link_to "Log in", new_user_session_path, class: "btn btn-danger" %>
+  <% end %>
+</div>
